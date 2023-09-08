@@ -1,4 +1,4 @@
-package Api_Testing;
+package test;
 
 import baseUrl.baseURL_JSONHolder;
 import io.restassured.response.Response;
@@ -79,7 +79,7 @@ public class C17_BaseURLJsonPlaceHolder extends baseURL_JSONHolder {
          */
         specJSONHolder.pathParams("pp1","posts","pp2","50");
 
-        // 2- expected data
+        // 2- expected
 
         // 3- response kaydetme
         Response response=given().spec(specJSONHolder).when().delete("/{pp1}/{pp2}");

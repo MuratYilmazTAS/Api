@@ -1,9 +1,7 @@
-package Api_Testing;
+package test;
 
 import io.restassured.response.Response;
 import org.junit.Test;
-
-import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 

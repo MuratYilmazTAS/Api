@@ -1,7 +1,6 @@
-package Api_Testing;
+package test;
 
 import io.restassured.response.Response;
-import org.hamcrest.Matchers;
 import org.json.JSONObject;
 import org.junit.Test;
 

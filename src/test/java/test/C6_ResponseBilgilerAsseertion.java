@@ -1,4 +1,4 @@
-package Api_Testing;
+package test;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
