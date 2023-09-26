@@ -1,91 +1,97 @@
 package test;
 
+
+
 import baseUrl.baseURL_JSONHolder;
 import io.restassured.response.Response;
-import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
 public class C17_BaseURLJsonPlaceHolder extends baseURL_JSONHolder {
-
     /*
-          Class icinde 3 Test metodu olusturun ve asagidaki testleri yapin
-          1- https://jsonplaceholder.typicode.com/posts endpointine bir GET request
-       gonderdigimizde donen response'un status code'unun 200 oldugunu ve
-       Response'ta 100 kayit oldugunu test edin
+    Class icinde 3 Test metodu olusturun ve asagidaki testleri yapin
+    1- https://jsonplaceholder.typicode.com/posts endpointine bir GET request
+	gonderdigimizde donen response’un status code’unun 200 oldugunu ve
+	Response’ta 100 kayit oldugunu test edin
 
-          2-https://jsonplaceholder.typicode.com/posts/44 endpointine bir GET request
-          gonderdigimizde donen response'un status code'unun 200 oldugunu ve "title"  degerinin
-           "optio dolor molestias sit" oldugunu test edin
+    2-https://jsonplaceholder.typicode.com/posts/44 endpointine bir GET request
+    gonderdigimizde donen response’un status code’unun 200 oldugunu ve “title” 	degerinin
+     “optio dolor molestias sit” oldugunu test edin
 
-          3-https://jsonplaceholder.typicode.com/posts/50 endpointine bir DELETE request
-       gonderdigimizde donen response'un status code'unun 200 oldugunu ve response
-          body'sinin null oldugunu test edin
+    3-https://jsonplaceholder.typicode.com/posts/50 endpointine bir DELETE request
+	gonderdigimizde donen response’un status code’unun 200 oldugunu ve response
+    body’sinin null oldugunu test edin
 
      */
-
     @Test
-    public void get01() {
-          /*
-          1- https://jsonplaceholder.typicode.com/posts endpointine bir GET request
-       gonderdigimizde donen response'un status code'unun 200 oldugunu ve
-       Response'ta 100 kayit oldugunu test edin
+    public void get01(){
+        /*
+
+    1- https://jsonplaceholder.typicode.com/posts endpointine bir GET request
+	gonderdigimizde donen response’un status code’unun 200 oldugunu ve
+	Response’ta 100 kayit oldugunu test edin
      */
 
-        // 1- endpoint hazirlama
-        specJSONHolder.pathParam("pp1", "posts");
+        //1-endpoint hazırlama
+        specJSONHolder.pathParam("pp1","posts");
 
-        // 2=Expected data Hazirlama
+        //2-Expected Data Hazırlama
 
-        // 3- Response kaydetme
-        Response response = given().spec(specJSONHolder).when().get("/{pp1}");
+        //3-Response kaydetme
+        Response response=given().spec(specJSONHolder).when().get("/{pp1}");
 
-        // 4- Assertion
-        response.then().assertThat().statusCode(200)
+        //4-Assertion
+
+        response.then().assertThat()
+                .statusCode(200)
                 .body("body", hasSize(100));
-
-
 
     }
     @Test
-    public void get02 () {
-
+    public void get02(){
         /*
-         2-https://jsonplaceholder.typicode.com/posts/44 endpointine bir GET request
-          gonderdigimizde donen response'un status code'unun 200 oldugunu ve "title"  degerinin
-           "optio dolor molestias sit" oldugunu test edin
+        2-https://jsonplaceholder.typicode.com/posts/44 endpointine bir GET request
+        gonderdigimizde donen response’un status code’unun 200 oldugunu ve “title” 	degerinin
+        “optio dolor molestias sit” oldugunu test edin
          */
 
-        // 1- Endpoint tanimlama
+
+        //1- Endpoint Tanımlama
         specJSONHolder.pathParams("pp1","posts","pp2",44);
 
-        // 2- Expected Data
+        //2-Expected Data Tanımlama
 
-        // 3- Response Kaydetme
+        //3-Response kaydetme
         Response response=given().spec(specJSONHolder).when().get("/{pp1}/{pp2}");
 
-        // 4- Assertion Islemi
-        response.then().assertThat().statusCode(200).body("title",equalTo("optio dolor molestias sit"));
+        //4-Assertions
+
+        response.then().assertThat()
+                .statusCode(200)
+                .body("title",equalTo("optio dolor molestias sit"));
 
     }
     @Test
     public void delete(){
         /*
         3-https://jsonplaceholder.typicode.com/posts/50 endpointine bir DELETE request
-       gonderdigimizde donen response'un status code'unun 200 oldugunu ve response
-          body'sinin null oldugunu test edin
+	    gonderdigimizde donen response’un status code’unun 200 oldugunu ve response
+        body’sinin null oldugunu test edin
          */
-        specJSONHolder.pathParams("pp1","posts","pp2","50");
 
-        // 2- expected
+        //1- Endpoint Hazırlama
+        specJSONHolder.pathParams("pp1","posts","pp2",50);
 
-        // 3- response kaydetme
+        //2-Expected Data
+        //3-Response kaydetme
         Response response=given().spec(specJSONHolder).when().delete("/{pp1}/{pp2}");
 
-        //4- Assertion
-        response.then().assertThat().statusCode(200).body("title",Matchers.nullValue());
+        //4-Assertion
+        response.then().assertThat()
+                .statusCode(200)
+                .body("title",nullValue());
+
     }
 
 }

@@ -2,10 +2,13 @@ package testdatas;
 
 import org.json.JSONObject;
 
+import java.util.HashMap;
+
 public class JSONPlaceData {
     public int basariliStatsuCode=200;
     public String contentType="application/json; charset=utf-8";
     public String header="keep-alive";
+
 
 
     public JSONObject expectedBodyOlusturJSON(){
@@ -34,9 +37,22 @@ public class JSONPlaceData {
         JSONObject reqbody = new JSONObject();
         reqbody.put("title", "Ahmet");
         reqbody.put("body", "Merhaba");
-        reqbody.put("userId", 10);
+        reqbody.put("userId", 10.0);
         reqbody.put("id", 70);
 
         return reqbody;
     }
+    public HashMap redBodyOlusturMAP() {
+
+
+        HashMap<String, Object> reqbody = new HashMap<>();
+        reqbody.put("title", "Ahmet");
+        reqbody.put("body", "Merhaba");
+        reqbody.put("userId", 10.0);
+        reqbody.put("id", 70.0);
+
+        return reqbody;
+
+    }
+
 }

@@ -68,7 +68,7 @@ public class C10_Post_JsonPathIleBodyTesti {
 
        // Response Islemi
         Response response=given()
-                                 .contentType("application-json")// pre comdition
+                                 .contentType("application-json")// pre condition
                          .when()
                                  .body(reqBody2.toString()).post(url);
 

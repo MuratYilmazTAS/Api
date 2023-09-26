@@ -67,7 +67,7 @@ public class C12_Post_JsonPathIleBodyTesti {
         reqBody.put("totalprice",500);
         reqBody.put("depositpaid",false);
         reqBody.put("bookingdates",innerData);
-        reqBody.put("dditionalneeds","wi-fi");
+        reqBody.put("additionalneeds","wi-fi");
         // 2- Expected Data
 
         // 3- Response kaydetme
